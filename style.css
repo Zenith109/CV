@@ -1,268 +1,93 @@
-/* Apply border-box to all elements */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+/*
+  You don't need to touch this file to complete the assignment!
+  Unless you want to add styles and make it look more beautiful.
+*/
 
-/* Body styling */
+/*
+  Some colors you may find useful:
+  #115ff4
+  #060ce9
+  #28a200
+  #8d2ab5
+  #74119c
+*/
 body {
-    background: #1E1E1E url('Background_CV.png') no-repeat center fixed;
-    background-size: cover;
-    color: #E0E0E0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px; /* Increased font size */
-    margin: 0;
-    padding: 30px; /* Increased padding */
-    animation: pulse 2s infinite;
-    background-size: cover;
-    animation: fadeInOut 2s infinite;
-}
-
-@keyframes fadeInOut {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Navigation bar styling */
-nav {
-    background-color: rgba(46, 46, 46, 0.8);
-    border-bottom: 2px solid #FF6347;
-    padding: 10px;
-    text-align: center;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #FF6347;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: 'Poppins', sans-serif;
-}
-
-nav ul li a:hover {
-    color: #FF4500;
-    text-decoration: underline;
-}
-
-nav ul li a:visited {
-    color: red;
-}
-
-/* Profile picture styling */
-.profile-picture {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #E0E0E0;
-}
-
-/* Header section styling */
-#header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(46, 46, 46, 0.8);
-    color: #FF6347;
-    padding: 30px; /* Increased padding */
-    border-bottom: 2px solid #FF6347;
-    position: relative;
-}
-
-#header h1 {
-    font-size: 32px; /* Increased font size */
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    color: #FF6347;
-    text-align: center;
-    text-shadow: 3px 3px 6px #FF4500;
-    margin: 0;
-}
-
-#header .contact-info {
-    text-align: center;
-    margin-top: 10px;
-}
-
-/* Section styling */
-section {
-    margin: 20px 0;
-    padding: 20px;
-    border: 2px solid #E0E0E0;
-    background-color: rgba(30, 30, 30, 0.8);
-    border-radius: 10px;
-}
-
-/* Header tags styling */
-h1, h2, h3, h4, h5, h6 {
-    padding-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
-    color: #FF6347;
-    text-shadow: 2px 2px 4px #FF4500;
-    margin-bottom: 10px;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    font-size: 40px; /* Increased font size */
-    text-align: center;
-    margin-bottom: 20px;
+  font-size: 2.5em;
+  margin: 20px 0;
 }
 
-h2 {
-    font-size: 32px; /* Increased font size */
-    margin-bottom: 15px;
+#play {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
 
-h2 a {
-    text-decoration: none;
-    color: #FF6347;
+#play:hover {
+  background-color: #0056b3;
 }
 
-h3 {
-    font-size: 28px; /* Increased font size */
+#spinner {
+  display: none;
 }
 
-h4 {
-    font-size: 24px; /* Increased font size */
-    margin-bottom: 8px;
+#spinner.disabled {
+  display: inline-block;
 }
 
-h5 {
-    font-size: 20px; /* Increased font size */
-    margin-bottom: 6px;
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-h6 {
-    font-size: 18px; /* Increased font size */
-    margin-bottom: 4px;
+.category {
+  background-color: #1e90ff;
+  padding: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
-/* Paragraph styling */
-p {
-    font-size: 16px; /* Increased font size */
-    font-family: 'Roboto', sans-serif;
-    color: #E0E0E0;
-    text-align: left;
-    line-height: 1.6;
+.clue {
+  background-color: #00008b;
+  padding: 20px;
+  font-size: 1.5em;
+  cursor: pointer;
 }
 
-/* Form elements styling */
-input, textarea, select, button {
-    background-color: #2E2E2E;
-    color: #E0E0E0;
-    border: 1px solid #E0E0E0;
-    padding: 10px;
-    margin-bottom: 10px;
+.clue.viewed {
+  background-color: #4b0082;
 }
 
-input:focus, textarea:focus, select:focus, button:focus {
-    outline: none;
+#active-clue {
+  margin-top: 20px;
+  font-size: 1.5em;
+  padding: 20px;
+  background-color: #1e90ff;
+  display: inline-block;
+  cursor: pointer;
 }
 
-/* Contact section */
-#contact, #contact-form, #about, #education, #technologies, #experience, #projects {
-    background-color: rgba(46, 46, 46, 0.8);
-    color: #E0E0E0;
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
+.disabled
+{
+  display: none;
 }
 
-#contact-form {
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-/* Tools table styling */
-#tools-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#tools-table th, #tools-table td {
-    border: 1px solid #E0E0E0;
-    padding: 10px;
-    text-align: left;
-}
-
-#tools-table th {
-    background-color: #FF6347;
-    color: #FFFFFF;
-}
-
-#tools-table td {
-    background-color: rgba(46, 46, 46, 0.8);
-    color: #E0E0E0;
-}
-
-/* Responsive design */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    .profile-picture {
-        width: 150px;
-        height: 150px;
-    }
-
-    #header h1 {
-        font-size: 32px; /* Adjusted font size */
-    }
-
-    h1 {
-        font-size: 32px; /* Adjusted font size */
-    }
-
-    h2 {
-        font-size: 28px; /* Adjusted font size */
-    }
-
-    h3 {
-        font-size: 24px; /* Adjusted font size */
-    }
-
-    h4 {
-        font-size: 20px; /* Adjusted font size */
-    }
-
-    h5 {
-        font-size: 18px; /* Adjusted font size */
-    }
-
-    h6 {
-        font-size: 16px; /* Adjusted font size */
-    }
-}
-
-/* Hover effect for links */
-.hover-link:hover {
-    color: #FF4500;
-    text-decoration: underline;
-}
-
-/* Hover effect for all text elements */
-h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover, p:hover, a:hover, span:hover, li:hover {
-    color: #FFD700; /* Gold color for better readability */
-    text-shadow: 2px 2px 4px #FFA500; /* Orange shadow for better readability */
+.viewed
+{
+  text-decoration: line-through;
 }
